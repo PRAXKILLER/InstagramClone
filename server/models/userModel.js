@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    description: String,
+    name: { type: String },
+    email: { type: String },
+    password: { type: String },
+    description: { type: String },
     userName: {
         unique: true,
         type: String
@@ -21,7 +21,7 @@ const userSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "User"
     }],
-    phoneNumber: Number,
+    phoneNumber: { type: Number },
     gender: {
         type: String,
         enum: ["Male", "Female", "Other"],
