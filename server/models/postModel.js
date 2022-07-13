@@ -9,6 +9,8 @@ const PostSchema = new mongoose.Schema({
     comments: [{ type: mongoose.Types.ObjectId, ref: "Comments" }],
     isDeleted: Boolean,
     description: String,
+}, {
+    timestamps: true,
 });
 
 export const PostsModel = mongoose.model("Posts", PostSchema);

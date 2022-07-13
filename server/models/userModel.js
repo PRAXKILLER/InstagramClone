@@ -34,6 +34,8 @@ const userSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Chats"
     }
+}, {
+    timestamps: true,
 });
 
 export const UserModel = mongoose.model("User", userSchema);
