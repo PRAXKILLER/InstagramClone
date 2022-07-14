@@ -1,7 +1,7 @@
 import { UserModel } from "./userModel";
 import { PostsModel } from "./postModel";
 
-export default {
+export {
     UserModel,
     PostsModel
 }
