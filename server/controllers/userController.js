@@ -25,7 +25,48 @@ const deleteUser = async(req, res) => {
     }
 }
 
+const searchUsers = async(req, res) => {
+    try {
+        const { searchString } = req.body;
+        const users = await UserModel.find({
+            $or: [{ userName: { $regex: searchString, $options: "i" } }, { name: { $regex: searchString, $options: "i" } }]
+        })
+
+        if (users.length == 0)
+            return res.status(404).json({ error: "No User Found" });
+
+        return res.status(200).json({ users });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+}
+
+const follow = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const userId = req.session.passport.user._doc._id;
+
+        await UserModel.findByIdAndUpdate(id, {
+            $push: {
+                followers: userId
+            }
+        })
+
+        const followerData = await UserModel.findByIdAndUpdate(userId, {
+            $push: {
+                following: id
+            }
+        }, { new: true })
+
+        return res.status(200).json({ followerData });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+}
+
 export default {
     updateUser,
-    deleteUser
+    deleteUser,
+    searchUsers,
+    follow
 }

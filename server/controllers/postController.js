@@ -30,7 +30,27 @@ const deletePost = async(req, res) => {
     }
 }
 
+const likeAPost = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const userId = req.session.passport.user._doc._id;
+
+        const post = await PostsModel.findByIdAndUpdate(id, {
+            $push: {
+                likes: userId
+            }
+        }, {
+            new: true
+        })
+
+        return res.status(200).json({ post });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+}
+
 export default {
     addNewPost,
-    deletePost
+    deletePost,
+    likeAPost
 }
