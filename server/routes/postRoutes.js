@@ -8,3 +8,5 @@ const router = express.Router();
 router.post("/add", postController.addNewPost);
 
 router.delete("/delete/:id", postController.deletePost);
+
+export default router;
