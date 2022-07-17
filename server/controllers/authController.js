@@ -6,7 +6,7 @@ import { UserModel } from "../models";
 // Validators
 import { ValidateSignup, ValidateSignin } from '../Validators/authValidation'
 
-const userSignup = (req, res) => {
+const userSignup = async(req, res) => {
     try {
         await ValidateSignup(req.body)
         await UserModel.findByEmailPhoneAndUserName(req.body);
@@ -19,16 +19,16 @@ const userSignup = (req, res) => {
     }
 }
 
-const userSignin = (req, res) => {
+const userSignin = async(req, res) => {
     try {
         await ValidateSignin(req.body)
-        const token = "";
+        let token = "";
         if (req.body.email) {
             const newUser = await UserModel.findByEmailAndPassword(req.body);
-            const token = newUser.generateJwtToken();
+            token = newUser.generateJwtToken();
         } else {
             const newUser = await UserModel.findByUserNameAndPassword(req.body);
-            const token = newUser.generateJwtToken();
+            token = newUser.generateJwtToken();
         }
 
         return res.status(200).json({ token: token, status: "Success" });

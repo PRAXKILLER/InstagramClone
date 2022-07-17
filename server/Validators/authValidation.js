@@ -5,7 +5,7 @@ export const ValidateSignup = (userData) => {
         userName: joi.string().required().max(20).min(5),
         email: joi.string().email().required(),
         password: joi.string().required().min(5),
-        phoneNumer: joi.number().min(10).max(10)
+        phoneNumber: joi.number()
     })
 
     return Scheme.validateAsync(userData);
