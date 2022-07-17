@@ -3,7 +3,7 @@ import { PostsModel } from "./postModel";
 import { CommentsModel } from "./commentsModel";
 import { ImageModel } from "./imageModel";
 
-export default {
+export {
     UserModel,
     PostsModel,
     CommentsModel,
