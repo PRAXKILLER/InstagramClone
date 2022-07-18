@@ -1,9 +1,8 @@
-import express from 'express'
-import passport from 'passport';
+import express from "express";
+import passport from "passport";
 
 // Controllers
-import userController from '../controllers/userController';
-
+import userController from "../controllers/userController";
 
 const router = express.Router();
 
