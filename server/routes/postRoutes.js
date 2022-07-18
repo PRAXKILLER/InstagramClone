@@ -1,18 +1,17 @@
 import express from "express";
+import passport from "passport";
 
 // Controllers
-import postController from "../controllers/postController";
+import PostController from "../controllers/postController";
 
 const router = express.Router();
 
-router.get("/post/following", (req, res) => {
-  res.render();
-});
+router.get("/following", passport.authenticate("jwt"), PostController.getFollowingPosts);
 
-router.get("/post/get/:id", postController.getPost);
+router.get("/get/:id", PostController.getPost);
 
-router.post("/add", postController.addNewPost);
+router.post("/add", passport.authenticate("jwt"), PostController.addNewPost);
 
-router.delete("/delete/:id", postController.deletePost);
+router.delete("/delete/:id", PostController.deletePost);
 
 export default router;
