@@ -88,10 +88,22 @@ const likeAPost = async(req, res) => {
     }
 }
 
+const getUserPosts = async(req, res) => {
+    try {
+        const userId = req.session.passport.user._doc._id;
+        const { posts } = await UserModel.findById(userId, "posts").populate("posts");
+
+        return res.status(200).json({ posts });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+}
+
 export default {
     addNewPost,
     deletePost,
     getPost,
     getFollowingPosts,
-    likeAPost
+    likeAPost,
+    getUserPosts
 };
