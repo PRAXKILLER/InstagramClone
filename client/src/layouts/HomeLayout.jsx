@@ -7,7 +7,6 @@ function HomeLayout({ children }) {
   return (
     <div className='w-full h-full'>
       <Navbar />
-      <Post />
       <div>{children}</div>
     </div>
   )
