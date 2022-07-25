@@ -1,50 +1,52 @@
-import React from "react";
+import React, { Component } from "react";
 import "./post.css";
 
+    class Post extends Component {
 
-function Post() {
+      render() {
 
-    return( <article className="Post" ref="Post">
+        return <div className="Post" >
 
-        <header>
+            <div>
 
-          <div className="Post-user">
+              <div className="Post-user">
 
-            <div className="Post-user-profilepicture">
+                <div className="Post-user-profilepicture">
 
-              <img src="E:\Web Development\HTML-personal site\Sk2.jpg" alt="Sarthak Kulkarni" />
+                  <img src="https://t4.ftcdn.net/jpg/02/19/63/31/360_F_219633151_BW6TD8D1EA9OqZu4JgdmeJGg4JBaiAHj.jpg" alt="Sarthak" />
+
+                </div>
+
+                <div className="Post-user-nickname">
+
+                  <span>Sarthak</span>
+
+                </div>
+
+              </div>
 
             </div>
 
-            <div className="Post-user-nickname">
+            <div className="Post-image">
 
-              <span>Sarthak Kulkarni</span>
+              <div className="Post-image-bg">
+
+                <img alt="Icon Living" src="https://cdn-images-1.medium.com/max/1200/1*dMSWcBZCuzyRDeMr4uE_og.png" />
+
+              </div>
 
             </div>
 
-          </div>
+            <div className="Post-caption">
 
-        </header>
+              <strong>Sarthak Kulkarni </strong> Web developer
 
-        <div className="Post-image">
+            </div>
 
-          <div className="Post-image-bg">
+          </div>;
 
-            <img alt="Icon Living" src="E:\Web Development\Insta post\post1.jpg" />
+        }
 
-          </div>
+    }
 
-        </div>
-
-        <div className="Post-caption">
-
-          <strong>Sarthak Kulkarni </strong> Web Developer
-
-        </div>
-
-      </article>
-    );
-
-}
-
-export default Post;
+    export default Post;
