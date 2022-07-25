@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
 
+
 function App() {
 
   return (
@@ -14,9 +15,10 @@ function App() {
       <Route path='/:type' element={<HomeLayout>
         <HomePage />
       </HomeLayout>}/>
-      <Route path='/login' element={<LoginPage />} />
+      <Route path='/login' element={<LoginPage />} />      
     </Routes>
   );
 }
 
 export default App;
+//<Routes path='/index' element={<Post />}/>    import Post from './components/Post/index';
