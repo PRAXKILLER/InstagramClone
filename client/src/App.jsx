@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import HomeLayout from './layouts/HomeLayout';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
 
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         <HomePage />
       </HomeLayout>}/>
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/profile' element={<HomeLayout>
+        <ProfilePage />
+      </HomeLayout>} />
     </Routes>
   );
 }
