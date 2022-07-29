@@ -1,0 +1,3 @@
+export const ADD_POST = 'ADD_POST';
+export const GET_FOLLOWING_POSTS = 'GET_FOLLOWING_POSTS';
+export const GET_USER_POSTS = 'GET_USER_POSTS';

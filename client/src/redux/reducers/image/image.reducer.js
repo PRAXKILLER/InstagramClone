@@ -1,7 +1,7 @@
 import { ADD_IMAGE, GET_IMAGE } from "./image.types";
 
 const initialState = {
-  image: [],
+  image: {},
 };
 
 const ImageReducer = (state = initialState, action) => {

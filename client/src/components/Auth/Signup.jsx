@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { signUp } from "../../redux/reducers/auth/auth.action";
 
 function Signup() {
+  
+  const [userData ,setUserData] = useState({
+    email : '',
+    password : '',
+    userName : ''
+  })
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setUserData((prev) => ({...prev, [e.target.id] : e.target.value}))
+  }
+
+  const onSignUp = () => {
+    dispatch(signUp(userData))
+  }
   return (
     <>
       <div
@@ -23,6 +41,7 @@ function Signup() {
             <input
               type="text"
               id="email"
+              onChange={handleChange}
               className="block px-2.5 pb-2.5 pt-4 w-full text-lg text-gray-900 bg-gray-300 border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
@@ -37,6 +56,7 @@ function Signup() {
             <input
               type="text"
               id="userName"
+              onChange={handleChange}
               className="block px-2.5 pb-2.5 pt-4 w-full text-lg text-gray-900 bg-gray-300 border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
@@ -50,12 +70,13 @@ function Signup() {
           <div className="relative border-2 border-black w-full mt-4 rounded-sm">
             <input
               type="text"
-              id="fullName"
+              id="name"
+              onChange={handleChange}
               className="block px-2.5 pb-2.5 pt-4 w-full text-lg text-gray-900 bg-gray-300 border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
             <label
-              htmlFor="fullName"
+              htmlFor="name"
               className="absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-2 z-10 origin-[0] bg-transparent dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-gray-900 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-3 left-1"
             >
               Full Name
@@ -65,6 +86,7 @@ function Signup() {
             <input
               type="text"
               id="password"
+              onChange={handleChange}
               className="block px-2.5 pb-2.5 pt-4 w-full text-lg text-gray-900 bg-gray-300 border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
@@ -79,8 +101,8 @@ function Signup() {
             <h1 className="text-xl text-center">People who use our service may have uploaded your contact information to Instagram.</h1>
           </div>
           <div className=" w-full mt-4">
-            <button className=" rounded-lg border-2 border-black w-full bg-blue-500 font-serif text-lg">
-              Sign In
+            <button onClick={onSignUp} className=" rounded-lg border-2 border-black w-full bg-blue-500 font-serif text-lg">
+              Sign Up
             </button>
           </div>
           <div className="w-full flex flex-row mt-5 justify-between">
