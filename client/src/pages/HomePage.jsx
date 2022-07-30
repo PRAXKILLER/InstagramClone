@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 import AddPost from "../components/Post/AddPost";
 import FollowingPosts from "../components/Post/FollowingPosts";
+import ProfilePage from "./ProfilePage";
 
 function HomePage() {
   const { type } = useParams();
@@ -27,6 +28,8 @@ function HomePage() {
         </div>
       </div>
       {type == 'home' && <FollowingPosts />}
+      {type == 'profile' && <ProfilePage />}
+      
     </>
   );
 }
