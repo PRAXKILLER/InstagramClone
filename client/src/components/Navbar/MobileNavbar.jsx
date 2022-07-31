@@ -18,7 +18,7 @@ function MobileNavbar() {
   console.log(type);
 
   return (
-    <div className="fixed bottom-0 bg-white overflow-scroll w-full flex flex-row h-16 md:hidden border-t-2 border-black p-1">
+    <div className="sticky bottom-0 bg-white w-full flex flex-row h-16 md:hidden border-t-2 border-black p-1">
       <Link
         to={`/home`}
         className="w-1/5 h-full flex justify-center items-center"

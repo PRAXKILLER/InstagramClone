@@ -12,15 +12,15 @@ function LikesArea(props) {
     <div className="w-full p-3 border-2 border-gray-300">
       <div className="flex justify-start items-center">
         {props.isLiked ? (
-          <AiFillHeart className="text-red-700 h-8 w-8" />
+          <AiFillHeart className="text-red-700 h-8 w-8 lg:w-7 lg:h-7" />
         ) : (
-          <AiOutlineHeart className="h-8 w-8" />
+          <AiOutlineHeart className="h-8 w-8 lg:w-7 lg:h-7" />
         )}
         <button onClick={onPress}>
-          <TbMessageCircle2 className="h-8 w-8 ml-2" />
+          <TbMessageCircle2 className="h-8 w-8 lg:w-7 lg:h-7 ml-2" />
         </button>
       </div>
-      <div className="my-2 text-lg flex-shrink">
+      <div className="my-2 text-lg flex-shrink lg:text-base">
         <h1 className="">
           Liked By{" "}
           <span className="font-bold hover:underline cursor-pointer">
@@ -28,7 +28,7 @@ function LikesArea(props) {
           </span>{" "}
           and <span className="font-bold">69 others</span>
         </h1>
-        <h1 className="text-lg font-bold flex flex-row flex-shrink">
+        <h1 className="text-lg font-bold flex flex-row flex-shrink lg:text-base">
           prax_killer<h1 className="font-normal ml-2">{props.description}</h1>
         </h1>
         <h1 className="font-light mt-1">June 8</h1>

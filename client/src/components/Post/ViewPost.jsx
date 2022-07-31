@@ -10,7 +10,7 @@ import PostHeader from "./PostHeader";
 import { getImage } from "../../redux/reducers/image/image.action";
 import { useDispatch } from "react-redux";
 
-function SmallViewPost(props) {
+function ViewPost(props) {
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
   const [image, setImage] = useState({});
 
@@ -28,7 +28,7 @@ function SmallViewPost(props) {
 
   return (
     <>
-      <div className="w-full md:w-11/12 h-full p-2 border border-black lg:hidden flex justify-center items-center">
+      <div className="w-full md:w-11/12 lg:w-1/3 h-full p-2 border border-black flex justify-center items-center">
         <div className="flex flex-col w-full h-full">
           {isCommentsOpen ? (
             <div className="flex flex-col w-full h-full">
@@ -44,11 +44,11 @@ function SmallViewPost(props) {
           ) : (
             <div className="w-full h-full">
               <PostHeader />
-              <div className="h-full w-full bg-black">
+              <div className="h-full w-full bg-black flex justify-center">
                 <img
                   src={image.location}
                   alt="postImage"
-                  className="w-auto h-auto"
+                  className="w-auto h-full"
                 />
               </div>
               <LikesArea setIsCommentsOpen={setIsCommentsOpen} description={props.description}/>
@@ -61,4 +61,4 @@ function SmallViewPost(props) {
   );
 }
 
-export default SmallViewPost;
+export default ViewPost;

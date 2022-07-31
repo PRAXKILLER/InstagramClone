@@ -18,7 +18,7 @@ function LargeNavbar() {
 
   return (
     <>
-      <div className="items-center flex-row justify-between hidden md:flex w-full h-16 my-4 border-b-2 border-gray-200">
+      <div className="sticky top-0 bg-white items-center flex-row justify-between hidden md:flex w-full h-16 my-4 border-b-2 border-gray-200">
         <Link
           to={`/home`}
           className="flex flex-row items-center justify-center w-1/3 h-full p-4"

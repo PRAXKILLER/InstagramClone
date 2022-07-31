@@ -9,7 +9,6 @@ function HomeLayout({ children }) {
       <Navbar />
       <div>
         {children}
-        <div className="h-16 bg-white"></div>
       </div>
       <MobileNavbar />
     </div>

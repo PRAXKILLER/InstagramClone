@@ -9,10 +9,7 @@ import Signin from "./components/Auth/Signin";
 import Signup from "./components/Auth/Signup";
 import WaitingPage from "./pages/WaitingPage";
 
-
-
 function App() {
-
   return (
     <Routes>
       <Route path="/" element={<WaitingPage />} />
