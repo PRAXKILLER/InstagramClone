@@ -11,10 +11,6 @@ const userSchema = mongoose.Schema({
         unique: true,
         type: String
     },
-    posts: [{
-        type: mongoose.Types.ObjectId,
-        ref: "Posts"
-    }],
     followers: [{
         type: mongoose.Types.ObjectId,
         ref: "User"

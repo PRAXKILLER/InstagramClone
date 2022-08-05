@@ -1,8 +1,12 @@
-export const shuffleArray = function(array) {
-    for (let i = 0; i < array.length; i++) {
-        const random = parseInt(Math.floor(Math.random() * array.length));
-        let ele = array[i];
-        array[i] = array[random];
-        array[random] = ele;
+function shuffleArray(arr) {
+    var i, j, tmp;
+    for (i = arr.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
+    return arr;
 }
+
+export default shuffleArray;
