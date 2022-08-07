@@ -1,15 +1,18 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Post from '../components/Post/index'     
+import React from "react";
+import MobileNavbar from "../components/Navbar/MobileNavbar";
+import Navbar from "../components/Navbar/Navbar";
 
 function HomeLayout({ children }) {
-    console.log(children);
+  console.log(children);
   return (
-    <div className='w-full h-full'>
+    <div className="w-full h-full">
       <Navbar />
-      <div>{children}</div>
+      <div>
+        {children}
+      </div>
+      <MobileNavbar />
     </div>
-  )
+  );
 }
 
-export default HomeLayout
+export default HomeLayout;

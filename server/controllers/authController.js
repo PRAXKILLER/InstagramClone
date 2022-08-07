@@ -9,7 +9,7 @@ import { ValidateSignup, ValidateSignin } from '../Validators/authValidation'
 const userSignup = async(req, res) => {
     try {
         await ValidateSignup(req.body)
-        await UserModel.findByEmailPhoneAndUserName(req.body);
+        await UserModel.findByEmailAndUserName(req.body);
         const newUser = await UserModel.create(req.body);
         const token = newUser.generateJwtToken();
 
