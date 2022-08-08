@@ -8,11 +8,14 @@ import LikesArea from "../Likes/LikesArea";
 import PostHeader from "./PostHeader";
 
 import { getImage } from "../../redux/reducers/image/image.action";
+import { getAParticularUser } from "../../redux/reducers/user/user.action";
 import { useDispatch } from "react-redux";
 
 function ViewPost(props) {
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
   const [image, setImage] = useState({});
+  const [user, setUser] = useState();
+  const [profile, setProfile] = useState();
 
   const dispatch = useDispatch();
 
@@ -23,6 +26,12 @@ function ViewPost(props) {
   useEffect(() => {
     dispatch(getImage(props.image)).then((data) => {
       setImage(data.payload.image);
+    });
+    dispatch(getAParticularUser(props.user)).then((data) => {
+      setUser(data.payload.user);
+      dispatch(getImage(data.payload.user.profilePic)).then((data) => {
+        setProfile(data.payload.image);
+      });
     });
   }, []);
 
@@ -43,7 +52,7 @@ function ViewPost(props) {
             </div>
           ) : (
             <div className="w-full h-full">
-              <PostHeader />
+              <PostHeader user={user} profile={profile} />
               <div className="h-full w-full bg-black flex justify-center">
                 <img
                   src={image.location}
@@ -51,7 +60,10 @@ function ViewPost(props) {
                   className="w-auto h-full"
                 />
               </div>
-              <LikesArea setIsCommentsOpen={setIsCommentsOpen} description={props.description}/>
+              <LikesArea
+                setIsCommentsOpen={setIsCommentsOpen}
+                description={props.description}
+              />
               <AddComment />
             </div>
           )}

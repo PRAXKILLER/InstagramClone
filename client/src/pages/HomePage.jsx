@@ -1,15 +1,25 @@
 import { type } from "@testing-library/user-event/dist/type";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsPlusSquare } from "react-icons/bs";
 import { RiChatSmile3Line } from "react-icons/ri";
+import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 import AddPost from "../components/Post/AddPost";
 import FollowingPosts from "../components/Post/FollowingPosts";
+import { getFollowingPosts } from "../redux/reducers/post/post.action";
 import ProfilePage from "./ProfilePage";
 
 function HomePage() {
   const { type } = useParams();
+  const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getFollowingPosts()).then((data) => {
+      setPosts(data.payload.posts);
+    });
+  }, []);
   return (
     <>
       <div className="sticky top-0 bg-white flex md:hidden justify-between items-center p-4 border-b-2 border-black">
@@ -27,9 +37,8 @@ function HomePage() {
           </Link>
         </div>
       </div>
-      {type == 'home' && <FollowingPosts />}
-      {type == 'profile' && <ProfilePage />}
-      
+      {type == "home" && <FollowingPosts posts={posts}/>}
+      {type == "profile" && <ProfilePage />}
     </>
   );
 }
