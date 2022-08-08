@@ -94,28 +94,16 @@ const getAParticularUser  = async(req,res) => {
             return res.status(404).json("User Not Found");
         }
 
-const getUserdata = async(req, res) => {
-    try 
-    {
-        const { id } = req.params;
-        const user = await UserModel.findById(id);
-        const { name } = user;
-
-         if (!user) {
-            return res.status(404).json({ error: "User not found" });
-        }
-        res.status(200).json({ user : name });
-    } catch (error)
-    {
-        return res.status(500).json({ error: error.message });
+        return res.status(200).json({user});
+    } catch (error) {
+        return res.status(500).json({error : error.message});
     }
 }
-
 export default {
-    updateUser,
-    deleteUser,
-    searchUsers,
-    follow,
-    getAuthorizedUser,
-    getAParticularUser,
+  updateUser,
+  deleteUser,
+  searchUsers,
+  follow,
+  getAuthorizedUser,
+  getAParticularUser,
 };
