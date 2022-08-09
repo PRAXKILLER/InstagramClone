@@ -57,7 +57,7 @@ const follow = async (req, res) => {
       },
     });
 
-    const followerData = await UserModel.findByIdAndUpdate(
+    const user = await UserModel.findByIdAndUpdate(
       userId,
       {
         $push: {
@@ -67,7 +67,7 @@ const follow = async (req, res) => {
       { new: true }
     );
 
-    return res.status(200).json({ followerData });
+    return res.status(200).json({ user });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -75,30 +75,29 @@ const follow = async (req, res) => {
 
 const getAuthorizedUser = async (req, res) => {
   try {
-    const { email, fullName, phoneNumber, address } =
-      req.session.passport.user._doc;
+    const { _id } = req.session.passport.user._doc;
 
-    return res.json({ user: { email, fullName, phoneNumber, address } });
+    const user = await UserModel.findById(_id);
+    return res.json({ user });
   } catch {
     return res.status(500).json({ error: error.message });
   }
 };
 
-const getAParticularUser  = async(req,res) => {
-    try {
-        const {id} = req.params;
-        const user = await UserModel.findById(id);
+const getAParticularUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await UserModel.findById(id);
 
-        if(!user)
-        {
-            return res.status(404).json("User Not Found");
-        }
-
-        return res.status(200).json({user});
-    } catch (error) {
-        return res.status(500).json({error : error.message});
+    if (!user) {
+      return res.status(404).json("User Not Found");
     }
-}
+
+    return res.status(200).json({ user });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
 export default {
   updateUser,
   deleteUser,

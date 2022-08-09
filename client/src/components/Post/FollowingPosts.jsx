@@ -6,7 +6,7 @@ import ViewPost from "./ViewPost";
 function FollowingPosts(props) {
 
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div className="w-full h-full flex flex-col items-center mb-2">
       {props.posts &&
         props.posts.map((post, index) => (
           <ViewPost
