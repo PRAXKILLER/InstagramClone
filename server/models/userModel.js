@@ -11,10 +11,6 @@ const userSchema = mongoose.Schema({
         unique: true,
         type: String
     },
-    posts: [{
-        type: mongoose.Types.ObjectId,
-        ref: "Posts"
-    }],
     followers: [{
         type: mongoose.Types.ObjectId,
         ref: "User"
@@ -44,16 +40,12 @@ userSchema.methods.generateJwtToken = function() {
     return jwt.sign({ user: this._id.toString() }, "InstagramApp")
 }
 
-userSchema.statics.findByEmailPhoneAndUserName = async({ userName, email, phoneNumber }) => {
+userSchema.statics.findByEmailAndUserName = async({ userName, email, phoneNumber }) => {
     const checkUserByEmail = await UserModel.findOne({ email });
-    const checkUserByPhone = await UserModel.findOne({ phoneNumber });
     const checkUserByUserName = await UserModel.findOne({ userName });
 
     if (checkUserByEmail)
         throw new Error("User with this email already exists");
-
-    if (checkUserByPhone)
-        throw new Error("User with this phone number already exists");
 
     if (checkUserByUserName)
         throw new Error("User with this username already exists");
