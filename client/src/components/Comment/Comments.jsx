@@ -73,4 +73,3 @@ function Comments() {
 }
 
 export default Comments;
-// https://w0.peakpx.com/wallpaper/901/784/HD-wallpaper-lionel-messi-national-team-soccer-messi-2021-argentina-captain-football.jpg
